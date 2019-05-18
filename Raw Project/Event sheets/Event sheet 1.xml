@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="gunOrKnifeOrAk47" sid="696714312660540" static="0" type="number">0</variable>
+        <variable constant="0" name="Health" sid="112986173047493" static="0" type="number">5</variable>
+        <variable constant="0" name="Bullets" sid="480945270151874" static="0" type="number">19</variable>
+        <variable constant="0" name="SCORE" sid="665290827064012" static="0" type="number">0</variable>
+        <event-block sid="406814633005222">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="197413489864495" type="System" />
+            </conditions>
+            <actions>
+                <action id="-22" name="Set angle toward position" sid="758531620288533" type="PlayerPistol">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="0" name="Set text" sid="800642816086487" type="Text2">
+                    <param id="0" name="Text">&quot;Score: &quot; &amp; SCORE</param>
+                </action>
+                <action id="0" name="Set text" sid="423091781512060" type="Text4">
+                    <param id="0" name="Text">&quot;Bullets: &quot; &amp; Bullets</param>
+                </action>
+                <action id="0" name="Set text" sid="590844725295650" type="Text5">
+                    <param id="0" name="Text">&quot;Health: &quot; &amp; Health</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="743871117481938" type="PlayerKnife">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="-22" name="Set angle toward position" sid="558097789525261" type="PlayerAk">
+                    <param id="0" name="X">Mouse.X</param>
+                    <param id="1" name="Y">Mouse.Y</param>
+                </action>
+                <action id="0" name="Set text" sid="140290995753931" type="Text6">
+                    <param id="0" name="Text">&quot;Class: &quot; &amp; gunOrKnifeOrAk47</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="666388886260122">
+            <conditions>
+                <condition id="0" name="On click" sid="242757769756718" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="761468191691920" type="PlayerPistol">
+                    <param id="0" name="Object">Bullets</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="818439213598174" type="PlayerAk">
+                    <param id="0" name="Object">BulletsAk2</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="474148549697289">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="995386240424021" type="Bullets" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="544292823190272" type="Bullets" />
+            </actions>
+        </event-block>
+        <event-block sid="355810551463845">
+            <conditions>
+                <condition id="-4" name="Is outside layout" sid="944068863898743" type="BulletsAk2" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="785944364821418" type="BulletsAk2" />
+            </actions>
+        </event-block>
+        <event-block sid="162650849992242">
+            <conditions>
+                <condition id="-18" name="On created" sid="278026863164275" type="Bullets" />
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="136122264664679" type="System">
+                    <param id="0" name="Variable">Bullets</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Play" sid="877115357674865" type="Audio">
+                    <param id="0" name="Audio file">Pistol Bullet</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="103456991613826">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="723306739852928" type="Bullets">
+                    <param id="0" name="Object">Zombie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="779302839391479" type="Zombie">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="442789947376685" type="Bullets">
+                    <param id="0" name="Object">Blood</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="912930174071263" type="Bullets" />
+            </actions>
+        </event-block>
+        <event-block sid="442260547912423">
+            <conditions>
+                <condition id="-18" name="On created" sid="137172569978728" type="BulletsAk2" />
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="672663822044636" type="PlayerAk">
+                    <param id="0" name="Instance variable">AkBullets</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Play" sid="535334210068459" type="Audio">
+                    <param id="0" name="Audio file">Ak 47 Bullet</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-35</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="173285905514898" type="Audio">
+                    <param id="0" name="Audio file">Bullet Shell</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="215088275773086">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="887200024087605" type="BulletsAk2">
+                    <param id="0" name="Object">Zombie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="629951689861683" type="Zombie">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="252628048913769" type="BulletsAk2">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="741972660566503" type="BulletsAk2" />
+                <action id="0" name="Play" sid="333343105422437" type="Audio">
+                    <param id="0" name="Audio file">Explosion</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-25</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="965553154012960">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="671571609435610" type="PlayerAk">
+                    <param id="0" name="Instance variable">AkBullets</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block any="1" sid="279741789970950">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="304084081722676" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="754454523752901" type="PlayerAk">
+                            <param id="0" name="Object">PlayerKnife</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="355791863862626" type="PlayerAk" />
+                        <action id="-9" name="Set value" sid="604161159995199" type="System">
+                            <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="304595818863568">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="135677926449528" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="288615272487832" type="PlayerAk">
+                            <param id="0" name="Object">PlayerPistol</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="585670305058324" type="PlayerAk" />
+                        <action id="-9" name="Set value" sid="876494829550994" type="System">
+                            <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="873860261968668">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="699157709817826" type="System" />
+            </conditions>
+            <actions>
+                <action id="-8" name="Set angle" sid="489268124581066" type="Zombie">
+                    <param id="0" name="Angle">random(360)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="523747105463792">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="297386553858968" type="Zombie">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="723329958117013" type="Zombie" />
+                <action id="-10" name="Add to" sid="500802105571713" type="System">
+                    <param id="0" name="Variable">SCORE</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="519551481183607">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="554303825654579" type="System">
+                    <param id="0" name="Interval (seconds)">35</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="101190503968190" type="System">
+                    <param id="0" name="Variable">SCORE</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Value">100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="777084539778828" type="Sprite">
+                    <param id="0" name="Object">Zombie</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="157880442288204">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="901243706501769" type="System">
+                    <param id="0" name="Interval (seconds)">30</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="988025454340843" type="System">
+                    <param id="0" name="Variable">SCORE</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">100</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="451166448079217" type="System">
+                    <param id="0" name="Variable">SCORE</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Value">175</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="166423417642268" type="Sprite">
+                    <param id="0" name="Object">Zombie</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="824373919998382">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="614273756629553" type="System">
+                    <param id="0" name="Interval (seconds)">25</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="712452546767409" type="System">
+                    <param id="0" name="Variable">SCORE</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">175</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="609327188946415" type="Sprite">
+                    <param id="0" name="Object">Zombie</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="260067956366509">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="944912397828828" type="System">
+                    <param id="0" name="Interval (seconds)">random(1,3)</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="391124824645574">
+                    <conditions>
+                        <condition id="-16" name="Pick random instance" sid="279336110042536" type="System">
+                            <param id="0" name="Object">Sprite2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="316182540128574" type="Sprite2">
+                            <param id="0" name="Object">Zombie</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="478916068923197">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="661290260990762" type="Zombie">
+                    <param id="0" name="Object">PlayerPistol</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="116227628857242" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="254112062094871" type="System">
+                    <param id="0" name="Variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="586752632064968">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="366553118535847" type="PlayerKnife">
+                    <param id="0" name="Object">Zombie</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="419530971901325" type="Zombie">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="0" name="Play" sid="683529567504015" type="Audio">
+                    <param id="0" name="Audio file">Knife Slash</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Spawn another object" sid="780945302111124" type="Zombie">
+                    <param id="0" name="Object">Blood</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="828101558026888">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="308756754405472" type="Zombie">
+                    <param id="0" name="Object">PlayerKnife</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="937644658910669" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="412276869455804" type="System">
+                    <param id="0" name="Variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="330272194256727">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="889827308665860" type="Zombie">
+                    <param id="0" name="Object">PlayerAk</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="263343610865280" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="386988462087103" type="System">
+                    <param id="0" name="Variable">Health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="988587576972432">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="853779541808800" type="System">
+                    <param id="0" name="Variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="374226031558042" type="PlayerPistol">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="305271404271250" type="PlayerPistol" />
+                <action id="-9" name="Destroy" sid="178429614585564" type="PlayerKnife" />
+                <action id="0" name="Spawn another object" sid="289520746245652" type="PlayerKnife">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="949220189155522" type="PlayerAk" />
+                <action id="0" name="Spawn another object" sid="431187866977336" type="PlayerAk">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="395425075017209" type="System">
+                    <param id="0" name="Layout">Game Over</param>
+                </action>
+                <action id="-21" name="Reset global variables" sid="962877647977812" type="System" />
+                <action id="0" name="Play" sid="798969705555188" type="Audio">
+                    <param id="0" name="Audio file">Explosion</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-20</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="470040717703722">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="441666675171921" type="System">
+                    <param id="0" name="Variable">Bullets</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="203668321717081" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="329247169500378" type="PlayerPistol">
+                    <param id="0" name="Object">PlayerKnife</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="973633086596467" type="PlayerPistol" />
+                <action id="-9" name="Set value" sid="297659672518410" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="852190017373785">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="749018838577980" type="System">
+                    <param id="0" name="Interval (seconds)">random(4,10)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="942204849512190" type="System">
+                    <param id="0" name="Object to create">Ammo</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(20,830)</param>
+                    <param id="3" name="Y">random(20,480)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="557357430044823">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="356564041681180" type="Ammo">
+                    <param id="0" name="Object">PlayerPistol</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="535092083056119" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="759607267281012" type="System">
+                    <param id="0" name="Variable">Bullets</param>
+                    <param id="1" name="Value">9</param>
+                </action>
+                <action id="-9" name="Destroy" sid="135405586976478" type="Ammo" />
+            </actions>
+        </event-block>
+        <event-block sid="652040550569595">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="681943086307002" type="Ammo">
+                    <param id="0" name="Object">PlayerKnife</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="933014079569067" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="528007469384294" type="PlayerKnife">
+                    <param id="0" name="Object">PlayerPistol</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="340217201833412" type="PlayerKnife" />
+                <action id="-9" name="Set value" sid="536624239476833" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-10" name="Add to" sid="327913612303844" type="System">
+                    <param id="0" name="Variable">Bullets</param>
+                    <param id="1" name="Value">9</param>
+                </action>
+                <action id="-9" name="Destroy" sid="441020756887399" type="Ammo" />
+            </actions>
+        </event-block>
+        <event-block sid="349347634191449">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="581519677134792" type="Ammo">
+                    <param id="0" name="Object">PlayerAk</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="313427065716145" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" sid="897414299700373" type="System">
+                    <param id="0" name="Variable">Bullets</param>
+                    <param id="1" name="Value">9</param>
+                </action>
+                <action id="-9" name="Destroy" sid="655670600999367" type="Ammo" />
+            </actions>
+        </event-block>
+        <event-block sid="862803143306191">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="728660545788501" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="708323516972992" type="PlayerKnife" />
+                <action id="-9" name="Destroy" sid="717554033744093" type="PlayerAk" />
+                <action id="-9" name="Destroy" sid="671728639112003" type="Bullets" />
+                <action id="-9" name="Destroy" sid="154015430495830" type="BulletsAk2" />
+            </actions>
+        </event-block>
+        <event-block sid="434060950425084">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="192347065891521" type="System">
+                    <param id="0" name="Interval (seconds)">random(10,15)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="877996640198436" type="System">
+                    <param id="0" name="Object to create">Ak</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(20,830)</param>
+                    <param id="3" name="Y">random(20,480)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="793691008140098">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="965465834687029" type="Ak">
+                    <param id="0" name="Object">PlayerPistol</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="418825233021348" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="883774029409138" type="PlayerPistol">
+                    <param id="0" name="Object">PlayerAk</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="591017065298728" type="PlayerPistol" />
+                <action id="-9" name="Set value" sid="161784356780965" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="547324034082292" type="Ak" />
+            </actions>
+        </event-block>
+        <event-block sid="429702151650936">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="440897855799604" type="Ak">
+                    <param id="0" name="Object">PlayerKnife</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="599232616371651" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="378949316966763" type="PlayerKnife">
+                    <param id="0" name="Object">PlayerAk</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-9" name="Destroy" sid="396414513494424" type="PlayerKnife" />
+                <action id="-9" name="Set value" sid="859645077737624" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="619407940221926" type="Ak" />
+            </actions>
+        </event-block>
+        <event-block sid="385060738435903">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="690983319634008" type="Ak">
+                    <param id="0" name="Object">PlayerAk</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="511431353478646" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Add to" sid="397375218592528" type="PlayerAk">
+                    <param id="0" name="Instance variable">AkBullets</param>
+                    <param id="1" name="Value">4</param>
+                </action>
+                <action id="-9" name="Destroy" sid="569689949303280" type="Ak" />
+            </actions>
+        </event-block>
+        <event-block sid="949807113282951">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="408620645711647" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="662542705223361">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="395585549368215" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="446153575851183" type="Zombie">
+                            <param id="0" name="X">PlayerAk.X</param>
+                            <param id="1" name="Y">PlayerAk.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="497810458358211">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="439875167474450" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="216808371405251">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="137873411701897" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="599570781027715" type="Zombie">
+                            <param id="0" name="X">Playerknife.X</param>
+                            <param id="1" name="Y">Playerknife.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="167846906625488">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="488684835038956" type="System">
+                    <param id="0" name="Variable">gunOrKnifeOrAk47</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="470697145418034">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="822783056809839" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" sid="750637779521637" type="Zombie">
+                            <param id="0" name="X">PlayerPistol.X</param>
+                            <param id="1" name="Y">PlayerPistol.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="755369732347766">
+            <conditions>
+                <condition id="2" name="Key is down" sid="126346163604588" type="Keyboard">
+                    <param id="0" name="Key">87</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="297922299835525" type="PlayerAk">
+                    <param id="0" name="Control">2</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="483734274661913" type="PlayerKnife">
+                    <param id="0" name="Control">2</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="139034699575231" type="PlayerPistol">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="689660945384933">
+            <conditions>
+                <condition id="2" name="Key is down" sid="913638573749079" type="Keyboard">
+                    <param id="0" name="Key">83</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="204595971839183" type="PlayerAk">
+                    <param id="0" name="Control">3</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="528062065222067" type="PlayerKnife">
+                    <param id="0" name="Control">3</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="437662531132537" type="PlayerPistol">
+                    <param id="0" name="Control">3</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="177005096214660">
+            <conditions>
+                <condition id="2" name="Key is down" sid="774734618329396" type="Keyboard">
+                    <param id="0" name="Key">68</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="429230384052974" type="PlayerAk">
+                    <param id="0" name="Control">1</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="847570090498772" type="PlayerKnife">
+                    <param id="0" name="Control">1</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="260992440093617" type="PlayerPistol">
+                    <param id="0" name="Control">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="797403530272001">
+            <conditions>
+                <condition id="2" name="Key is down" sid="940860147162069" type="Keyboard">
+                    <param id="0" name="Key">65</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="224967186477580" type="PlayerAk">
+                    <param id="0" name="Control">0</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="460188146843743" type="PlayerKnife">
+                    <param id="0" name="Control">0</param>
+                </action>
+                <action behavior="8Direction" id="7" name="Simulate control" sid="818281800807687" type="PlayerPistol">
+                    <param id="0" name="Control">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

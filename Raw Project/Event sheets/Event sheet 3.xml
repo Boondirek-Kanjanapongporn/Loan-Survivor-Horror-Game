@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 3</name>
+    <events>
+        <event-block sid="392013373587278">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="514143485374958" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="451187646804128" type="Text9">
+                    <param id="0" name="Text">&quot;STORY&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="888954769249221" type="Text10">
+                    <param id="0" name="Text">&quot;Once upon a time, there&apos;s a loan shark who has a large number of debters. But before all the debters could pay him back, a zombie apocalypse broke out into the human world. In the matter of days, the virus spread globally turning all debters to zombies. When he knew that there was no way of getting his money back, he decided to take matters into his own hands...&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="643802164696274" type="Text11">
+                    <param id="0" name="Text">&quot;How many debters will he &apos;TAKE CARE&apos;?&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="256203950898344" type="Text12">
+                    <param id="0" name="Text">&quot;To Move: WASD&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="191994790699748" type="Text13">
+                    <param id="0" name="Text">&quot;To Shoot&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="699003478734892">
+            <conditions>
+                <condition id="-18" name="On created" sid="706938832123580" type="Text9" />
+            </conditions>
+            <actions>
+                <action id="7" name="Play (by name)" sid="451080066260283" type="Audio">
+                    <param id="0" name="Folder">0</param>
+                    <param id="1" name="Audio file name">&quot;Soundtrack&quot;</param>
+                    <param id="3" name="Loop">1</param>
+                    <param id="4" name="Volume">-15</param>
+                    <param id="2" name="Tag (optional)">&quot;Soundtrack&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="937118304418661">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="849938076987894" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Continue</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="606458954107298" type="System">
+                    <param id="0" name="Layout">Game Phase</param>
+                </action>
+                <action id="6" name="Stop" sid="622289466855742" type="Audio">
+                    <param id="0" name="Tag">&quot;Soundtrack&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

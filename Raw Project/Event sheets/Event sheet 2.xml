@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 2</name>
+    <events>
+        <event-block sid="451617660095662">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="280604998121156" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="131458551742095" type="Text7">
+                    <param id="0" name="Text">&quot;The&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="197193663771687" type="Text8">
+                    <param id="0" name="Text">&quot;Loan Survivor&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="391447791190309" type="Text14">
+                    <param id="0" name="Text">&quot;Creator: Boondirek Kanjanapongporn&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="414781667908042">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="795589979234746" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">StartButton</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="297285390309976" type="System">
+                    <param id="0" name="Layout">Story Phase</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
